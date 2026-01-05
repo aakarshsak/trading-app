@@ -1,0 +1,79 @@
+services:
+  db:
+    image: postgres:16
+    container_name: db_container
+    restart: no
+    environment:
+      POSTGRES_DB: auth_db
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - pg_network
+
+
+  timescaledb:
+    image: timescale/timescaledb:latest-pg16
+    container_name: ts_container
+    restart: no
+    environment:
+      POSTGRES_DB: market_db
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+    ports:
+      - "5433:5432"
+    volumes:
+      - timescaledb-data:/var/lib/postgresql/data
+    networks:
+      - pg_network
+
+
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: pg_container
+    restart: no
+    environment:
+      PGADMIN_DEFAULT_EMAIL: aakarshsak@gmail.com
+      PGADMIN_DEFAULT_PASSWORD: password
+    depends_on:
+      - db
+
+  kafka:
+    image: apache/kafka:latest
+    container_name: kafka_container
+    restart: no
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_PROCESS_ROLES: broker, controller
+      KAFKA_LISTENERS: PLAINTEXT://:9092,CONTROLLER://:9093
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:9092
+      KAFKA_CONTROLLER_LISTENER_NAMES: CONTROLLER
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: CONTROLLER:PLAINTEXT,PLAINTEXT:PLAINTEXT
+      KAFKA_CONTROLLER_QUORUM_VOTERS: 1@localhost:9093 # Defines the controller voters
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
+      KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 1
+      KAFKA_GROUP_INITIAL_REBALANCE_DELAY_MS: 0
+      KAFKA_NUM_PARTITIONS: 3
+
+  redis:
+    image: redis:latest
+    container_name: redis_container
+    restart: no
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+
+volumes:
+  postgres_data:
+  timescaledb-data:
+  redis_data:
+    driver: local
+
+
+networks:
+  pg_network:
