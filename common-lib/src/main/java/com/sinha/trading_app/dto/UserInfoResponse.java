@@ -1,11 +1,20 @@
 package com.sinha.trading_app.dto;
 
 import com.sinha.trading_app.enums.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
+
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class UserInfoResponse {
     private UUID userId;
     private String firstName;
@@ -23,6 +32,7 @@ public class UserInfoResponse {
     private TradingStatus tradingStatus;
     private RiskProfile riskProfile;
     private LocalDateTime createdAt;
+    private LocalDateTime updatedAt;
     private LocalDateTime lastActiveAt;
     private LocalDateTime deletedAt;
 }
