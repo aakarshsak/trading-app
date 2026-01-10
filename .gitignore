@@ -7,7 +7,7 @@
 *.env
 !.env.example
 
-
+taget/*
 target/
 !.mvn/wrapper/maven-wrapper.jar
 .mvn/
