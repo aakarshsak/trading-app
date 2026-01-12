@@ -11,10 +11,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.UUID;
 
-@FeignClient(name = "user-service", path = "http://localhost:8000/users")
+@FeignClient(name = "user-service", url = "http://localhost:8000/users")
 public interface UserProxy {
 
-    @PostMapping("/")
+    @PostMapping("")
     ResponseEntity<ApiResponse<UserInfoResponse>> addUser(@RequestBody UserInfoRequest request);
 
     @PostMapping("/{id}")

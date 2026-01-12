@@ -7,6 +7,9 @@
 *.env
 !.env.example
 
+mock_data/
+
+
 target/
 !.mvn/wrapper/maven-wrapper.jar
 .mvn/

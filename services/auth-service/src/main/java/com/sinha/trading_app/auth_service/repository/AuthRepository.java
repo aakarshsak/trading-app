@@ -12,7 +12,7 @@ import java.util.UUID;
 public interface AuthRepository extends JpaRepository<AuthCredential, Long> {
     Optional<AuthCredential> findByEmail(String email);
 
-    Optional<AuthCredential> existsByEmail(String email);
+    boolean existsByEmail(String email);
 
     // Find auth credential with roles loaded
     @Query("SELECT ac FROM AuthCredential ac LEFT JOIN FETCH ac.userRoles ur LEFT JOIN FETCH ur.role WHERE ac.email = :email")

@@ -43,7 +43,8 @@ public class AuthServiceImpl implements AuthService {
     @Override
     @Transactional
     public AuthResponse registerAuth(RegisterRequest request) {
-        if(authRepository.existsByEmail(request.getEmail()).isPresent()) {
+
+        if(authRepository.existsByEmail(request.getEmail())) {
             throw new RuntimeException("Email already in use");
         }
 
@@ -66,7 +67,7 @@ public class AuthServiceImpl implements AuthService {
         );
 
         UUID userId = Objects.requireNonNull(response.getBody()).getData().getUserId();
-        Role userRole = roleRepository.findByName("USER")
+        Role userRole = roleRepository.findByName("ROLE_USER")
                 .orElseThrow(() -> new RuntimeException("USER role not found"));
 
         authCredential.setUserId(userId);
