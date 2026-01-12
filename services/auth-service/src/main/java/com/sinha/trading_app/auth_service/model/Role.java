@@ -22,6 +22,7 @@ public class Role {
     @Id
     @SequenceGenerator(name = "role_seq_gen", sequenceName="role_seq", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "role_seq_gen")
+    @Column(name = "id", updatable = false, nullable = false)
     private Long id;
 
     @Column(name = "name", nullable = false, unique = true, length = 50)
