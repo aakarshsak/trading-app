@@ -5,19 +5,20 @@ import com.sinha.trading_app.dto.UserInfoRequest;
 import com.sinha.trading_app.dto.UserInfoResponse;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.UUID;
 
-@FeignClient(name = "user-service", url = "http://localhost:8000/users")
+@FeignClient(name = "user-service", url = "http://localhost:8000")
 public interface UserProxy {
 
-    @PostMapping("")
+    @PostMapping("/users")
     ResponseEntity<ApiResponse<UserInfoResponse>> addUser(@RequestBody UserInfoRequest request);
 
-    @PostMapping("/{id}")
-    ResponseEntity<ApiResponse<UserInfoResponse>> getUserByAuthId(@PathVariable UUID authId);
+    @GetMapping("/users/{id}")
+    ResponseEntity<ApiResponse<UserInfoResponse>> getUserByAuthId(@PathVariable("id") UUID userId);
 
 }

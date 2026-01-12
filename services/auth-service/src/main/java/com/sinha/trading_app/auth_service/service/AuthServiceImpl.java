@@ -113,7 +113,6 @@ public class AuthServiceImpl implements AuthService {
         authRepository.save(authCredential);
 
         ResponseEntity<ApiResponse<UserInfoResponse>> response = userProxy.getUserByAuthId(authCredential.getUserId());
-        UUID uuid = Objects.requireNonNull(response.getBody()).getData().getUserId();
 
         String accessToken = UUID.randomUUID().toString();
         String refreshToken = UUID.randomUUID().toString();
@@ -125,7 +124,7 @@ public class AuthServiceImpl implements AuthService {
                 .refreshToken(refreshToken)
                 .tokenType("Bearer")
                 .expiresIn(3600L)
-                .user(response.getBody().getData())
+                .user(Objects.requireNonNull(response.getBody()).getData())
                 .requires2FA(requires2FA)
                 .build();
     }
