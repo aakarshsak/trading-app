@@ -22,7 +22,7 @@ public class JwtUtil {
     @Autowired
     public JwtUtil(JwtProperties jwtProperties) {
         this.jwtProperties = jwtProperties;
-        this.secretKey = Keys.hmacShaKeyFor("28a62a6497670411dcf9f127ce4f9747b9e35b8f7e00515c2ceedd6a3d959cbc".getBytes(StandardCharsets.UTF_8));
+        this.secretKey = Keys.hmacShaKeyFor(jwtProperties.getSecretKey().getBytes(StandardCharsets.UTF_8));
     }
 
     public String generateAccessToken(UUID userId, String email, List<String> roles, List<String> permissions) {

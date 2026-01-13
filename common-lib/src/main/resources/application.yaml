@@ -1,5 +1,5 @@
 jwt:
-  secret-key: ${JWT_SECRET_KEY:28a62a6497670411dcf9f127ce4f9747b9e35b8f7e00515c2ceedd6a3d959cbc}
+  secret-key: ${JWT_SECRET_KEY}
   access-token-expiry: ${JWT_ACCESS_TOKEN_EXPIRY:900000}
   refresh-token-expiry: ${JWT_REFRESH_TOKEN_EXPIRY:604800000}
   issuer: ${JWT_ISSUER:auth-service}
