@@ -1,10 +1,12 @@
 package com.sinha.trading_app.auth_service.controller;
 
 import com.sinha.trading_app.auth_service.dto.request.LoginRequest;
+import com.sinha.trading_app.auth_service.dto.request.RefreshTokenRequest;
 import com.sinha.trading_app.auth_service.dto.request.RegisterRequest;
 import com.sinha.trading_app.auth_service.dto.response.AuthResponse;
+import com.sinha.trading_app.auth_service.dto.response.TokenResponse;
 import com.sinha.trading_app.auth_service.service.AuthService;
-import com.sinha.trading_app.dto.ApiResponse;
+import com.sinha.trading_app.common.dto.ApiResponse;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -21,7 +23,7 @@ import java.time.LocalDateTime;
 public class AuthController {
 
 
-    private AuthService authService;
+    private final AuthService authService;
 
     @Autowired
     public AuthController(AuthService authService) {
@@ -50,5 +52,18 @@ public class AuthController {
                 .timestamp(LocalDateTime.now())
                 .build());
     }
+
+    @PostMapping("/refresh")
+    public ResponseEntity<ApiResponse<TokenResponse>> refreshToken(@Valid @RequestBody RefreshTokenRequest request) {
+        TokenResponse tokenResponse = authService.refreshAccessToken(request);
+        return ResponseEntity.status(HttpStatus.OK).body(ApiResponse.<TokenResponse>builder()
+                        .status("success")
+                        .message("Token refreshed successfully")
+                        .data(tokenResponse)
+                        .timestamp(LocalDateTime.now())
+                        .build());
+    }
+
+
 
 }

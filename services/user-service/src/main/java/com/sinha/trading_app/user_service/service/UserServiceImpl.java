@@ -1,9 +1,9 @@
 package com.sinha.trading_app.user_service.service;
 
-import com.sinha.trading_app.dto.UserInfoRequest;
-import com.sinha.trading_app.dto.UserInfoResponse;
-import com.sinha.trading_app.enums.RiskProfile;
-import com.sinha.trading_app.enums.UserStatus;
+import com.sinha.trading_app.common.dto.UserInfoRequest;
+import com.sinha.trading_app.common.dto.UserInfoResponse;
+import com.sinha.trading_app.common.enums.RiskProfile;
+import com.sinha.trading_app.common.enums.UserStatus;
 import com.sinha.trading_app.user_service.model.User;
 import com.sinha.trading_app.user_service.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;

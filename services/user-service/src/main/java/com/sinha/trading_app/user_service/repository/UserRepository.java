@@ -1,7 +1,7 @@
 package com.sinha.trading_app.user_service.repository;
 
 
-import com.sinha.trading_app.enums.UserStatus;
+import com.sinha.trading_app.common.enums.UserStatus;
 import com.sinha.trading_app.user_service.model.User;
 import jakarta.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;

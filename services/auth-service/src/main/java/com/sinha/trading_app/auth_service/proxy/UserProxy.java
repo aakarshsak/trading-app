@@ -1,8 +1,8 @@
 package com.sinha.trading_app.auth_service.proxy;
 
-import com.sinha.trading_app.dto.ApiResponse;
-import com.sinha.trading_app.dto.UserInfoRequest;
-import com.sinha.trading_app.dto.UserInfoResponse;
+import com.sinha.trading_app.common.dto.ApiResponse;
+import com.sinha.trading_app.common.dto.UserInfoRequest;
+import com.sinha.trading_app.common.dto.UserInfoResponse;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;

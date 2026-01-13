@@ -28,3 +28,6 @@ eureka:
     hostname: localhost
     ip-address: 127.0.0.1
 
+
+api-gateway:
+  secret-key: supersecretgatewaykey1234

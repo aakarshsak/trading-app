@@ -1,7 +1,6 @@
 package com.sinha.trading_app.user_service.advice;
 
-import com.sinha.trading_app.dto.ErrorResponse;
-import jakarta.ws.rs.NotFoundException;
+import com.sinha.trading_app.common.dto.ErrorResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;

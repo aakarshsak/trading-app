@@ -1,7 +1,7 @@
 package com.sinha.trading_app.user_service.model;
 
 
-import com.sinha.trading_app.enums.*;
+import com.sinha.trading_app.common.enums.*;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
