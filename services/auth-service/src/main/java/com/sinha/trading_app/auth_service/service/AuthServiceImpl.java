@@ -132,6 +132,7 @@ public class AuthServiceImpl implements AuthService {
 
         ResponseEntity<ApiResponse<UserInfoResponse>> response = userProxy.getUserByAuthId(authCredential.getUserId());
 
+        tokenService.revokeAllUserTokens(authCredential.getUserId());
         String accessToken = generateAccessToken(authCredential);
         String refreshToken = generateAndStoreRefreshToken(authCredential, null, null);
 
@@ -259,4 +260,5 @@ public class AuthServiceImpl implements AuthService {
 
         return refreshToken;
     }
+
 }

@@ -14,8 +14,8 @@ public class CustomExceptionHandler {
     public ResponseEntity<ErrorResponse> handleNotFound(NoHandlerFoundException ex) {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).
                 body(ErrorResponse.builder()
-                        .errorCode(HttpStatus.INTERNAL_SERVER_ERROR.value())
-                        .status(HttpStatus.INTERNAL_SERVER_ERROR.toString())
+                        .errorCode(HttpStatus.NOT_FOUND.value())
+                        .status(HttpStatus.NOT_FOUND.toString())
                         .message(ex.getMessage())
                         .timestamp(java.time.LocalDateTime.now())
                         .build());

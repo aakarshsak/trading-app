@@ -7,6 +7,8 @@ import com.sinha.trading_app.auth_service.dto.response.AuthResponse;
 import com.sinha.trading_app.auth_service.dto.response.TokenResponse;
 import com.sinha.trading_app.auth_service.service.AuthService;
 import com.sinha.trading_app.common.dto.ApiResponse;
+import com.sinha.trading_app.common.dto.MessageResponse;
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -64,6 +66,12 @@ public class AuthController {
                         .build());
     }
 
-
+//    @PostMapping("/logout")
+//    public ResponseEntity<MessageResponse> logout(HttpServletRequest request) {
+//
+//
+//
+//        authService.logout();
+//    }
 
 }
